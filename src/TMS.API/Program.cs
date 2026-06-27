@@ -104,10 +104,11 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TMS API v1"
 
 app.MapControllers();
 
-// ── Seed ──────────────────────────────────────────────────────────────────────
+// ── Migrate + Seed ────────────────────────────────────────────────────────────
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TmsDbContext>();
+    db.Database.Migrate();
     await DataSeeder.SeedAsync(db);
 }
 

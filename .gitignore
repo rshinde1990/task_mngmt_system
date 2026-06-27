@@ -28,6 +28,9 @@ frontend/.env*.local
 src/TMS.API/appsettings.json
 src/TMS.API/appsettings.Development.json
 
+# Docker secrets — use .env.example as template
+.env
+
 # OS
 .DS_Store
 Thumbs.db
