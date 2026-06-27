@@ -1,0 +1,29 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.vsidx
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Rider / ReSharper
+.idea/
+*.DotSettings.user
+
+# EF Core migrations scratch
+*.db
+*.db-shm
+*.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env*.local
+
+# OS
+.DS_Store
+Thumbs.db
