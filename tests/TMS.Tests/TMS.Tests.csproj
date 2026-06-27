@@ -13,6 +13,7 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="FluentAssertions" Version="8.10.0" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.5.3" />
@@ -26,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\TMS.Application\TMS.Application.csproj" />
     <ProjectReference Include="..\..\src\TMS.Domain\TMS.Domain.csproj" />
+    <ProjectReference Include="..\..\src\TMS.Infrastructure\TMS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
