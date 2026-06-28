@@ -4,7 +4,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Serilog;
 using TMS.Application.Interfaces;
 using TMS.Application.Services;
@@ -73,20 +73,30 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "TMS API", Version = "v1" });
 
-    var securityScheme = new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name         = "Authorization",
-        Description  = "Enter: Bearer {token}",
+        Description  = "Paste the JWT token only (no 'Bearer ' prefix — Swagger adds it automatically)",
         In           = ParameterLocation.Header,
         Type         = SecuritySchemeType.Http,
         Scheme       = "bearer",
         BearerFormat = "JWT"
-    };
+    });
 
-    c.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securityScheme);
-
-    var schemeRef = new OpenApiSecuritySchemeReference(JwtBearerDefaults.AuthenticationScheme);
-    c.AddSecurityRequirement(_ => new OpenApiSecurityRequirement { { schemeRef, new List<string>() } });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id   = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 var app = builder.Build();
