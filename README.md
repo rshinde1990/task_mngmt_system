@@ -51,7 +51,7 @@ dotnet ef database update --project src/TMS.Infrastructure --startup-project src
 
 **Visual Studio 2022:** Open `TMS.sln`, set `TMS.API` as the startup project, press **F5**.
 
-The API starts at `https://localhost:5001`. Swagger UI is available at `https://localhost:5001/swagger`.
+The API starts at `http://localhost:5212`. Swagger UI is available at `http://localhost:5212/swagger`.
 
 **CLI alternative:**
 
@@ -147,7 +147,7 @@ docker compose down -v
 ## Sample Login
 
 ```bash
-curl -X POST https://localhost:5001/api/auth/login \
+curl -X POST http://localhost:5212/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"password123"}'
 ```
@@ -167,7 +167,7 @@ curl -X POST https://localhost:5001/api/auth/login \
 Use the token in subsequent requests:
 
 ```bash
-curl https://localhost:5001/api/tasks \
+curl http://localhost:5212/api/tasks \
   -H "Authorization: Bearer <jwt-token>"
 ```
 

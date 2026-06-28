@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:all": "concurrently \"dotnet run --project ../src/TMS.API\" \"npm run dev\"",
+    "dev:all": "concurrently --names API,UI --prefix-colors cyan,magenta \"dotnet run --project ../src/TMS.API --launch-profile http\" \"npm run dev\"",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
